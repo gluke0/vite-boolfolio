@@ -37,6 +37,8 @@ export default{
         <!-- http://127.0.0.1:8000/storage/project_images/SOeQTvNVrbgRm2va4FJwuoXLjBtRFrgb5I5p1vRJ.png 
         this is the images path-->
 
+        <p class="card-text" v-if="project.techologies"> <strong> Technology: </strong> </p>
+        <p v-for="(project, index) in project.technologies" :key="index"> {{project.name}} </p> 
         
       </div>
   </div>
