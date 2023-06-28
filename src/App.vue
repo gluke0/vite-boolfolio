@@ -59,6 +59,30 @@ export default{
         
       </div>
   </div>
+
+  <!-- pages with buttons -->
+  <div class="d-flex justify-content-center my-5">
+    <nav arial-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" @click.prevent="displayProjects(currentPage - 1)" href="#" aria-label="Previous">
+            <span aria-hidden="true"> &laquo; </span>
+          </a>
+        </li>
+        
+        <li class="page-item" :class="(currentPage == project) ? 'active' : ''" aria-current="page" v-for="(project, index) in lastPage" :key="index">
+          <a class="page-link" @click.prevent="displayProjects(project)" href="#"> {{ project }} </a>
+        </li>
+          
+
+        <li class="page-item">
+          <a class="page-link" @click.prevent="displayProjects(currentPage + 1)" href="#" aria-label="Next">
+            <span aria-hidden="true"> &raquo; </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
 
 </template>
