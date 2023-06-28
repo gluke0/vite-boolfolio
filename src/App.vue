@@ -42,5 +42,6 @@ export default{
 
 @use './style/main.scss';
 
+
 </style>
 
