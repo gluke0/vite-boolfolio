@@ -32,7 +32,12 @@ export default{
   <div v-for="(project, index) in projects" :key="index">
       <div class="card-body card p-3">
         <p class="card-text"><strong> Title: </strong> {{ project.title }} </p>
-        <p class="card-text"> <img class="img-fluid" src="" alt=""> </p>
+        <img class="img-fluid" :src="`${commonUrl}/storage/${project.image}`" alt="">
+
+        <!-- http://127.0.0.1:8000/storage/project_images/SOeQTvNVrbgRm2va4FJwuoXLjBtRFrgb5I5p1vRJ.png 
+        this is the images path-->
+
+        
       </div>
   </div>
 </div>
