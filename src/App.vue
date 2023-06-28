@@ -39,6 +39,9 @@ export default{
 
         <p class="card-text" v-if="project.techologies"> <strong> Technology: </strong> </p>
         <p v-for="(project, index) in project.technologies" :key="index"> {{project.name}} </p> 
+
+        <!-- this is the line of code if I want to show the project category
+        <p class="card-text" v-if="project.category"> <strong> Category: </strong> {{project.category.name}} </p> -->
         
       </div>
   </div>
