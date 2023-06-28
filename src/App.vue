@@ -5,20 +5,29 @@ export default{
   data(){
     return{
       projects: [],
-      commonUrl: 'http://127.0.0.1:8000'
+      commonUrl: 'http://127.0.0.1:8000',
+      currentPage: 1,
+      lastPage: null,
+      nextPage: null,
     }
   },
   mounted(){
-    this.displayProjects();
+    this.displayProjects(1);
   },
   methods:{
-    displayProjects(){
-      axios.get(`${this.commonUrl}/api/projects`)
+    displayProjects(projectApiPage){
+      axios.get(`${this.commonUrl}/api/projects`,{
+        params:{
+          page: projectApiPage,
+        }
+      })
       .then(res=>{
-        this.projects = res.data.projects;
+        this.projects = res.data.projects.data,
+        this.currentPage = res.data.projects.current_page,
+        this.lastPage = res.data.projects.last_page,
 
         // checking if the axios call is working correctly
-        console.log(this.projects)
+        console.log(res.data.projects.data)
       })
     }
 
@@ -58,10 +67,6 @@ export default{
 <style lang="scss">
 
 @use './style/main.scss';
-
-// li{
-//   list-style-type: none;
-// }
 
 </style>
 
