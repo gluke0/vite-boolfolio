@@ -68,7 +68,7 @@ export default{
     <nav arial-label="Page navigation">
       <ul class="pagination">
         <li class="page-item">
-          <a class="page-link" @click.prevent="displayProjects(currentPage - 1)" href="#" aria-label="Previous">
+          <a class="page-link" @click.prevent="currentPage > 1 ? displayProjects(currentPage - 1) : null" href="#" aria-label="Previous">
             <span aria-hidden="true"> &laquo; </span>
           </a>
         </li>
@@ -79,7 +79,7 @@ export default{
           
 
         <li class="page-item">
-          <a class="page-link" @click.prevent="displayProjects(currentPage + 1)" href="#" aria-label="Next">
+          <a class="page-link" @click.prevent="currentPage < lastPage ? displayProjects(currentPage + 1) : null" href="#" aria-label="Next">
             <span aria-hidden="true"> &raquo; </span>
           </a>
         </li>
