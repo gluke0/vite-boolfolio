@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 
 import AppHome from './pages/AppHome.vue';
 import ProjectsList from './pages/ProjectsList.vue';
+import SingleProject from './pages/SingleProject.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -15,7 +16,13 @@ const router = createRouter({
             path: '/portfolio',
             name: 'portfolio',
             component: ProjectsList,
-        }
+        },
+        {
+            // /:slug cause slug is dynamic
+            path: '/portfolio/:slug', 
+            name: 'project',
+            component: SingleProject,
+        },
     ]
 });
 

@@ -60,7 +60,11 @@ export default{
         <!-- this is the line of code if I want to show the project category
         <p class="card-text" v-if="project.category"> <strong> Category: </strong> {{project.category.name}} </p> -->
         
+        <div>
+          <router-link :to="{name: 'project', params: {slug: project.slug}}"> Details </router-link>
+        </div>
       </div>
+
   </div>
 
   <!-- pages with buttons -->
