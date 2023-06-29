@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-import {store} from '../store';
+// import {store} from '../store';
 
 export default{
     name: 'SingleProject',
@@ -10,7 +10,7 @@ export default{
       project: null,
     }
   },
-  mounted(){
+  created(){
     console.log(this.$route);
     this.displayOneProject();
   },
@@ -29,8 +29,17 @@ export default{
 
 </script>
 
-<template></template>
+<template>
+ 
+ <div class="card text-white bg-primary">
+   <img class="card-img-top" src="holder.js/100px180/" alt="Title">
+   <div class="card-body">
+     <h4 class="card-title"> {{ project.title }} </h4>
+     <p class="card-text">Text</p>
+   </div>
+ </div>
 
+</template>
 
 
 <style lang="scss">

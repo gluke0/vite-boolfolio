@@ -1,7 +1,7 @@
 <script>
 
 export default{
-  name: 'AppHome',
+  name: 'NotFound',
   components:{
 },
   data(){
@@ -19,12 +19,14 @@ export default{
 </script>
 
 <template>
- <h1>ciao</h1>
+    <div class="container d-flex justify-content-center align-items-center">
+        <h1>404 | Page Not Found</h1>
+    </div>
 </template>
 
 
 <style lang="scss">
 
-
+ 
 </style>
 
