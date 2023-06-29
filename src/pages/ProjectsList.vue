@@ -3,7 +3,7 @@ import axios from 'axios';
 import {store} from '../store';
 
 export default{
-    name: 'ProjectCardApp',
+    name: 'ProjectsList',
   data(){
     return{
       projects: [],
@@ -93,7 +93,7 @@ export default{
 
 <style lang="scss">
 
-@use '../style/main.scss';
+
 
 
 </style>

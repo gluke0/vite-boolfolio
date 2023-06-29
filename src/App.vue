@@ -1,12 +1,14 @@
 <script>
 
 import {store} from './store';
-import ProjectCardApp from './components/ProjectCardApp.vue';
+import ProjectsList from './pages/ProjectsList.vue';
+import AppHeader from './components/AppHeader.vue';
 
 export default{
   name: 'App',
   components:{
-    ProjectCardApp
+    AppHeader,
+    ProjectsList
 },
   data(){
     return{
@@ -23,18 +25,8 @@ export default{
 </script>
 
 <template>
-  
-<header>
-<div class="container my-5">
-  <h1 class="text-uppercase"> My Projects </h1>
-</div>
-
-</header> 
-<main>
-  <ProjectCardApp></ProjectCardApp>
-</main> 
-
-
+  <AppHeader></AppHeader>
+  <ProjectsList></ProjectsList>
 </template>
 
 
