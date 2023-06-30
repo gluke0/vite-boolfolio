@@ -58,7 +58,7 @@ export default{
 <div class="container">
 
     <div>
-      <label for="" class="form-label"> Choose Projects Category </label>
+      <label for="" class="form-label"> Choose projects category </label>
       <select @change="displayProjects()" v-model="selectedCat" class="form-select form-select-lg" name="" id="">
         <option value="All">- - All - -</option>
         <option :value="project.id" v-for="(project, index) in categories" :key="index">{{ project.name }}</option>
