@@ -25,7 +25,7 @@ export default{
       const params = {
         page: projectApiPage,
       }
-      if (this.selectedCategory !== 'all'){
+      if (this.selectedCat !== 'all'){
         params.category_id = this.selectedCat
       }
 
@@ -60,7 +60,7 @@ export default{
     <div>
       <label for="" class="form-label"> Choose projects category </label>
       <select @change="displayProjects()" v-model="selectedCat" class="form-select form-select-lg" name="" id="">
-        <option value="All">- - All - -</option>
+        <option value="all">- - All - -</option>
         <option :value="project.id" v-for="(project, index) in categories" :key="index">{{ project.name }}</option>
       </select>
   </div>
