@@ -13,7 +13,20 @@ export default{
       nextPage: null,
       store,
       categories: null,
+      selectedCat: 'all',
     }
+  },
+  // i want now to print a message checking if the cat_id is empty
+  computed: {
+    checkingCat() {
+      if (this.selectedCat == 'all') {
+        // return all projects if 'all' is selected
+        return this.store.requestedProjects; 
+      } else {
+        const categoryId = parseInt(this.selectedCat);
+        return this.store.requestedProjects.filter(project => project.category_id == categoryId);
+      }
+    },
   },
   mounted(){
     this.displayProjects(1);
@@ -60,10 +73,14 @@ export default{
     <div>
       <label for="" class="form-label"> Choose projects category </label>
       <select @change="displayProjects()" v-model="selectedCat" class="form-select form-select-lg" name="" id="">
-        <option value="all">- - All - -</option>
+        <option value="all"> select category </option>
         <option :value="project.id" v-for="(project, index) in categories" :key="index">{{ project.name }}</option>
       </select>
-  </div>
+    </div>
+
+    <div v-if="checkingCat.length == 0">
+  <p>No project in this category.</p>
+    </div>
 
   <div v-for="(project, index) in store.requestedProjects" :key="index">
 
