@@ -25,8 +25,8 @@ export default{
       const params = {
         page: projectApiPage,
       }
-      if (this.selectedCategory !== 'All'){
-        params.category_id = this.selectedCategory
+      if (this.selectedCategory !== 'all'){
+        params.category_id = this.selectedCat
       }
 
       axios.get(`${this.commonUrl}/api/projects`,{ params })
@@ -57,10 +57,16 @@ export default{
 
 <div class="container">
 
-
-
+    <div>
+      <label for="" class="form-label"> Choose Projects Category </label>
+      <select @change="displayProjects()" v-model="selectedCat" class="form-select form-select-lg" name="" id="">
+        <option value="All">- - All - -</option>
+        <option :value="project.id" v-for="(project, index) in categories" :key="index">{{ project.name }}</option>
+      </select>
+  </div>
 
   <div v-for="(project, index) in store.requestedProjects" :key="index">
+
       <div class="card-body card p-3 mb-3">
         <p class="card-text mb-0"><strong> Title: </strong> {{ project.title }} </p>
         <img class="img-fluid my-3" :src="`${commonUrl}/storage/${project.image}`" alt="">
