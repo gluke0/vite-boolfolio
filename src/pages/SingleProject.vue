@@ -15,17 +15,34 @@ export default{
     this.displayOneProject();
   },
   methods:{
+    // displayOneProject(){
+    //   axios.get(`${this.commonUrl}/api/projects/${this.$route.params.slug}`)
+    //     .then((response)=>{
+    //       this.project = response.data.project;
+    //     }, error => {
+    //       if(error.response.status == 404){
+    //       this.$router.push({name: 'not-found'})
+    //     } else {
+
+    //     }
+    //   });
+    // }
     displayOneProject(){
-      axios.get(`${this.commonUrl}/api/projects/${this.$route.params.slug}`).then((res)=>{
-        if (res.data.success){
-          this.project = res.data.project;
-        } else {
-          this.$router.push({name: 'not-found'})
-        }
-      });
-    }
+        axios.get(`${this.commonUrl}/api/projects/${this.$route.params.slug}`).then((res)=>{
+          if (res.data.success){
+            this.project = res.data.project;
+          } else {
+            this.$router.push({name: 'not-found'})
+          }
+        });
+      }
   }
   }
+
+  
+  
+  
+  
 
 </script>
 
