@@ -24,7 +24,11 @@ export default{
 
         <nav class="navbar navbar-expand-sm navbar-light bg-dark">
               <div class="container">
-                <router-link :to="{name: 'home'}" > <img src="/img/logo.png" style="width: 50%" class="mx-0 px-0" alt="gluke logo"> </router-link>
+                
+              <router-link :to="{name: 'home'}">
+                  <img src="/img/logo.png" class="nav-link me-5" style="width: 12rem;" alt="gluke logo">
+              </router-link>
+                
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -56,6 +60,8 @@ export default{
 .router-link-active{
   color: rgb(139, 235, 144) !important;
 }
+
+
 
 </style>
 
