@@ -12,18 +12,27 @@ export default{
       lastPage: null,
       nextPage: null,
       store,
+      categories: null,
     }
   },
   mounted(){
     this.displayProjects(1);
+    this.onlyCategories();
   },
   methods:{
     displayProjects(projectApiPage){
-      axios.get(`${this.commonUrl}/api/projects`,{
-        params:{
-          page: projectApiPage,
-        }
-      })
+
+      const params = {
+        page: projectApiPage,
+      }
+      if (this.selectedCategory !== 'All'){
+        params.category_id = this.selectedCategory
+      }
+
+      axios.get(`${this.commonUrl}/api/projects`,{ params })
+        // params:{
+        //   page: projectApiPage,
+        // }
       .then(res=>{
         store.requestedProjects = res.data.projects.data,
         this.currentPage = res.data.projects.current_page,
@@ -32,6 +41,12 @@ export default{
         // checking if the axios call is working correctly
         console.log(res.data.projects.data)
       })
+    },
+    onlyCategories(){
+      axios.get(`${this.commonUrl}/api/categories`)
+        .then(res =>{
+          this.categories = res.data.categories
+        })
     }
 
   },
@@ -41,6 +56,10 @@ export default{
 <template>
 
 <div class="container">
+
+
+
+
   <div v-for="(project, index) in store.requestedProjects" :key="index">
       <div class="card-body card p-3 mb-3">
         <p class="card-text mb-0"><strong> Title: </strong> {{ project.title }} </p>
