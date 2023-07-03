@@ -121,7 +121,7 @@ export default{
       <!-- no pjcts in the cat error -->
       <div class="d-flex justify-content-center mt-5">
         <div v-if="checkingCat.length == 0">
-            <h5 class="text-danger">Sorry! No projects in this category yet!</h5>
+            <h5 class="text-danger">Sorry! No projects for this category yet!</h5>
         </div>
       </div>
 
@@ -227,46 +227,6 @@ input{
   font-weight: bolder;
 }
 
-// technology class
-.PHP{
-  background-color: darkblue;
-  border-radius: 0.9rem;
-  padding: 0 0.3rem;
-}
 
-.Vue{
-  background-color: violet;
-  border-radius: 0.9rem;
-  padding: 0 0.3rem;
-}
-
-.Vite{
-  background-color: green;
-  border-radius: 0.9rem;
-  padding: 0 0.3rem;
-}
-
-.Laravel{
-  background-color: red;
-  border-radius: 0.9rem;
-  padding: 0 0.3rem;
-}
-
-.CSS{
-  background-color: orange;
-  border-radius: 0.9rem;
-  padding: 0 0.3rem;
-}
-
-.HTML{
-  background-color: darkslategray;
-  border-radius: 0.9rem;
-  padding: 0 0.3rem;
-}
-.JavaScript{
-  background-color: yellow;
-  border-radius: 0.9rem;
-  padding: 0 0.3rem;
-}
 </style>
 
