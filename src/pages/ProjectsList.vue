@@ -125,7 +125,9 @@ export default{
     <div class="mt-4" v-for="(project, index) in store.requestedProjects" :key="index">
 
         <div class="card-body card p-3 mb-3">
-          <p class="card-text mb-0"><strong> Title: </strong> {{ project.title }} </p>
+          <div>
+            <p class="card-title mb-0 "><strong> <i class="fa-regular fa-file-code"></i> <router-link :to="{name: 'project', params: {slug: project.slug}}" class="text-decoration-none text-white"> {{ project.title }} </router-link> </strong> </p>
+          </div>
           <img class="img-fluid my-3" :src="`${commonUrl}/storage/${project.image}`" alt="">
 
           <!-- http://127.0.0.1:8000/storage/project_images/SOeQTvNVrbgRm2va4FJwuoXLjBtRFrgb5I5p1vRJ.png 
@@ -133,7 +135,7 @@ export default{
 
         <div>
           
-          <ul v-if="project.technologies" class="d-flex p-0">
+          <ul v-if="project.technologies" class="d-flex p-0 text-white">
             <strong class="me-2"> Technology: </strong>
             <li class="list-inline me-3" v-for="(project, index) in project.technologies" :key="index"> {{ project.name }} </li>
           </ul>
@@ -143,7 +145,7 @@ export default{
           <p class="card-text" v-if="project.category"> <strong> Category: </strong> {{project.category.name}} </p> -->
           
           <div>
-            <router-link :to="{name: 'project', params: {slug: project.slug}}"> Details </router-link>
+            <router-link :to="{name: 'project', params: {slug: project.slug}}" class="text-decoration-none"> Details </router-link>
           </div>
         </div>
 
@@ -154,18 +156,18 @@ export default{
       <nav arial-label="Page navigation">
         <ul class="pagination">
           <li class="page-item">
-            <a class="page-link" @click.prevent="currentPage > 1 ? displayProjects(currentPage - 1) : null" href="#" aria-label="Previous">
+            <a class="page-link bg-dark border-dark text-white" @click.prevent="currentPage > 1 ? displayProjects(currentPage - 1) : null" href="#" aria-label="Previous">
               <span aria-hidden="true"> &laquo; </span>
             </a>
           </li>
           
-          <li class="page-item" :class="(currentPage == project) ? 'active' : ''" aria-current="page" v-for="(project, index) in lastPage" :key="index">
-            <a class="page-link" @click.prevent="displayProjects(project)" href="#"> {{ project }} </a>
+          <li class="page-item" :class="(currentPage == project) ? 'currentpage' : ''" aria-current="page" v-for="(project, index) in lastPage" :key="index">
+            <a class="page-link bg-dark border-dark text-white" @click.prevent="displayProjects(project)" href="#"> {{ project }} </a>
           </li>
             
 
           <li class="page-item">
-            <a class="page-link" @click.prevent="currentPage < lastPage ? displayProjects(currentPage + 1) : null" href="#" aria-label="Next">
+            <a class="page-link bg-dark border-dark text-white" @click.prevent="currentPage < lastPage ? displayProjects(currentPage + 1) : null" href="#" aria-label="Next">
               <span aria-hidden="true"> &raquo; </span>
             </a>
           </li>
@@ -207,6 +209,20 @@ select{
 
 input{
   opacity: 0.5;
+}
+
+.fa-file-code{
+  color: rgb(139, 235, 144);
+  font-size: 2rem;
+}
+
+.card-title{
+  font-size: 3rem;
+}
+
+.currentpage a{
+  color: rgb(139, 235, 144) !important;
+  font-weight: bolder;
 }
 
 
