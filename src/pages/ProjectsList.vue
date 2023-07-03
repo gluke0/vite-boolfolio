@@ -14,6 +14,8 @@ export default{
       store,
       categories: null,
       selectedCat: 'all',
+      technologies: 'null',
+      chosenTechnologies: [],
     }
   },
   // i want now to print a message checking if the cat_id is empty
@@ -31,6 +33,13 @@ export default{
   mounted(){
     this.displayProjects(1);
     this.onlyCategories();
+    this.onlyTechnologies();
+  },
+  watch:{
+    chosenTechnologies: {
+      handler: 'displayProjects',
+      deep: true,
+    },
   },
   methods:{
     displayProjects(projectApiPage){
@@ -40,6 +49,9 @@ export default{
       }
       if (this.selectedCat !== 'all'){
         params.category_id = this.selectedCat
+      }
+      if (this.chosenTechnologies.length > 0){
+        params.technologies_ids = this.chosenTechnologies.join(',');
       }
 
       axios.get(`${this.commonUrl}/api/projects`,{ params })
@@ -60,6 +72,12 @@ export default{
         .then(res =>{
           this.categories = res.data.categories
         })
+    },
+    onlyTechnologies(){
+      axios.get(`${this.commonUrl}/api/technologies`)
+        .then(res =>{
+          this.technologies = res.data.technologies
+        })
     }
 
   },
@@ -76,6 +94,14 @@ export default{
         <option value="all"> select category </option>
         <option :value="project.id" v-for="(project, index) in categories" :key="index">{{ project.name }}</option>
       </select>
+    </div>
+
+    <div>
+      Filter projects based on their technologies
+      <label for="" v-for="(project, index) in technologies" :key ="index">
+        <input type="checkbox" :value="project.id" v-model="chosenTechnologies">
+        {{ project.name }}
+      </label>
     </div>
 
     <div v-if="checkingCat.length == 0">
