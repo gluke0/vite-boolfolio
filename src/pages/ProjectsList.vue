@@ -85,87 +85,129 @@ export default{
 </script>
 
 <template>
+<main class="main-container">
+  <div class="container">
 
-<div class="container">
+    <h1 class="mb-5"> <i> My Projects</i></h1>
 
-    <div>
-      <label for="" class="form-label"> Choose projects category </label>
-      <select @change="displayProjects()" v-model="selectedCat" class="form-select form-select-lg" name="" id="">
-        <option value="all"> select category </option>
-        <option :value="project.id" v-for="(project, index) in categories" :key="index">{{ project.name }}</option>
-      </select>
-    </div>
+      <div class="d-flex justify-content-between">
+        <!-- <div class="ms-3 me-1">
+          <label for="" class="form-label"> <h4> Filter projects based on their category </h4> </label>
+          <select @change="displayProjects()" v-model="selectedCat" class="form-select form-select-lg" name="" id="">
+            <option class="selcat" value="all">  select category </option>
+            <option :value="project.id" v-for="(project, index) in categories" :key="index">{{ project.name }}</option>
+          </select>
+        </div> -->
 
-    <div>
-      Filter projects based on their technologies
-      <label for="" v-for="(project, index) in technologies" :key ="index">
-        <input type="checkbox" :value="project.id" v-model="chosenTechnologies">
-        {{ project.name }}
-      </label>
-    </div>
+        <div class="me-1 ms-3 radiob">
+          <h4>Filter projects based on their category </h4>
+          <input type="radio" id="all" name="category" value="all" @change="displayProjects()" v-model="selectedCat">
+          <label class="me-3 ms-1" for="all"> All </label>
+          <label for="" v-for="(project, index) in categories" :key ="index">
+            <input class="" type="radio" :value="project.id" @change="displayProjects()" v-model="selectedCat">
+            <span class="me-3 ms-1"> {{ project.name }} </span>
+          </label>
+        </div>
 
-    <div v-if="checkingCat.length == 0">
-  <p>No project in this category.</p>
-    </div>
+        <div class="me-3 ms-1">
+          <h4>Filter projects based on their technologies </h4>
+          <label for="" v-for="(project, index) in technologies" :key ="index">
+            <input class="" type="checkbox" :value="project.id" v-model="chosenTechnologies">
+            <span class="me-3 ms-1"> {{ project.name }} </span>
+          </label>
+        </div>
 
-  <div v-for="(project, index) in store.requestedProjects" :key="index">
-
-      <div class="card-body card p-3 mb-3">
-        <p class="card-text mb-0"><strong> Title: </strong> {{ project.title }} </p>
-        <img class="img-fluid my-3" :src="`${commonUrl}/storage/${project.image}`" alt="">
-
-        <!-- http://127.0.0.1:8000/storage/project_images/SOeQTvNVrbgRm2va4FJwuoXLjBtRFrgb5I5p1vRJ.png 
-        this is the images path-->
-
-       <div>
-        
-        <ul v-if="project.technologies" class="d-flex p-0">
-          <strong class="me-2"> Technology: </strong>
-          <li class="list-inline me-3" v-for="(project, index) in project.technologies" :key="index"> {{ project.name }} </li>
-        </ul>
-       </div>
-
-        <!-- this is the line of code if I want to show the project category
-        <p class="card-text" v-if="project.category"> <strong> Category: </strong> {{project.category.name}} </p> -->
-        
-        <div>
-          <router-link :to="{name: 'project', params: {slug: project.slug}}"> Details </router-link>
+        <div v-if="checkingCat.length == 0">
+          <p>No project in this category.</p>
         </div>
       </div>
 
-  </div>
+    <div class="mt-4" v-for="(project, index) in store.requestedProjects" :key="index">
 
-  <!-- pages with buttons -->
-  <div class="d-flex justify-content-center my-5">
-    <nav arial-label="Page navigation">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" @click.prevent="currentPage > 1 ? displayProjects(currentPage - 1) : null" href="#" aria-label="Previous">
-            <span aria-hidden="true"> &laquo; </span>
-          </a>
-        </li>
-        
-        <li class="page-item" :class="(currentPage == project) ? 'active' : ''" aria-current="page" v-for="(project, index) in lastPage" :key="index">
-          <a class="page-link" @click.prevent="displayProjects(project)" href="#"> {{ project }} </a>
-        </li>
+        <div class="card-body card p-3 mb-3">
+          <p class="card-text mb-0"><strong> Title: </strong> {{ project.title }} </p>
+          <img class="img-fluid my-3" :src="`${commonUrl}/storage/${project.image}`" alt="">
+
+          <!-- http://127.0.0.1:8000/storage/project_images/SOeQTvNVrbgRm2va4FJwuoXLjBtRFrgb5I5p1vRJ.png 
+          this is the images path-->
+
+        <div>
           
+          <ul v-if="project.technologies" class="d-flex p-0">
+            <strong class="me-2"> Technology: </strong>
+            <li class="list-inline me-3" v-for="(project, index) in project.technologies" :key="index"> {{ project.name }} </li>
+          </ul>
+        </div>
 
-        <li class="page-item">
-          <a class="page-link" @click.prevent="currentPage < lastPage ? displayProjects(currentPage + 1) : null" href="#" aria-label="Next">
-            <span aria-hidden="true"> &raquo; </span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+          <!-- this is the line of code if I want to show the project category
+          <p class="card-text" v-if="project.category"> <strong> Category: </strong> {{project.category.name}} </p> -->
+          
+          <div>
+            <router-link :to="{name: 'project', params: {slug: project.slug}}"> Details </router-link>
+          </div>
+        </div>
+
+    </div>
+
+    <!-- pages with buttons -->
+    <div class="d-flex justify-content-center my-5">
+      <nav arial-label="Page navigation">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" @click.prevent="currentPage > 1 ? displayProjects(currentPage - 1) : null" href="#" aria-label="Previous">
+              <span aria-hidden="true"> &laquo; </span>
+            </a>
+          </li>
+          
+          <li class="page-item" :class="(currentPage == project) ? 'active' : ''" aria-current="page" v-for="(project, index) in lastPage" :key="index">
+            <a class="page-link" @click.prevent="displayProjects(project)" href="#"> {{ project }} </a>
+          </li>
+            
+
+          <li class="page-item">
+            <a class="page-link" @click.prevent="currentPage < lastPage ? displayProjects(currentPage + 1) : null" href="#" aria-label="Next">
+              <span aria-hidden="true"> &raquo; </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
-</div>
-
+</main>
 </template>
 
 
 <style lang="scss">
 
+.main-container{
+  padding-top: 5rem;
+  color: white;
+}
 
+.card{
+  color: black;
+  background-color: #7c7e7f;
+}
+
+.radiob{
+  width: calc(100% / 2 - 1rem);
+}
+
+select{
+  padding: 0 !important;
+  padding-left: 0.5rem !important;
+  background-color: #7c7e7f !important;
+  border: none !important;
+  color: white !important;
+}
+
+.selcat{
+  font-size: smaller !important;
+}
+
+input{
+  opacity: 0.5;
+}
 
 
 </style>

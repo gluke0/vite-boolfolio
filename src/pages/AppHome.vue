@@ -19,7 +19,7 @@ export default{
 </script>
 
 <template>
-  <main class="main-container vh-100 mt-5">
+  <main class="main-container-home vh-100 mt-5">
     <div class="container">
       <div>
         <div class="pt-5 pb-3 text-white fs-1"> <i> Welcome! </i>  </div>
@@ -37,7 +37,7 @@ a{
   color: rgb(139, 235, 144)
 }
 
-.main-container{
+.main-container-home{
   background-image: url(../../public/img/bg-logos.png);
   background-repeat: repeat;
   
