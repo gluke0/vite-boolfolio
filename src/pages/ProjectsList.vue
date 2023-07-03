@@ -137,17 +137,16 @@ export default{
           this is the images path-->
 
         <div>
-          
-          <ul v-if="project.technologies" class="d-flex p-0 text-white">
+          <ul v-if="project.technologies" class="d-flex p-0 text-white fs-5">
             <strong class="me-2"> Technology: </strong>
-            <li class="list-inline me-3" v-for="(project, index) in project.technologies" :key="index"> {{ project.name }} </li>
+            <li class="list-inline me-3" v-for="(project, index) in project.technologies" :key="index" :class="project.name"> {{ project.name }} </li>
           </ul>
         </div>
 
           <!-- this is the line of code if I want to show the project category
           <p class="card-text" v-if="project.category"> <strong> Category: </strong> {{project.category.name}} </p> -->
           
-          <div>
+          <div class="fs-5">
             <router-link :to="{name: 'project', params: {slug: project.slug}}" class="text-decoration-none"> Details </router-link>
           </div>
         </div>
@@ -228,6 +227,46 @@ input{
   font-weight: bolder;
 }
 
+// technology class
+.PHP{
+  background-color: darkblue;
+  border-radius: 0.9rem;
+  padding: 0 0.3rem;
+}
 
+.Vue{
+  background-color: violet;
+  border-radius: 0.9rem;
+  padding: 0 0.3rem;
+}
+
+.Vite{
+  background-color: green;
+  border-radius: 0.9rem;
+  padding: 0 0.3rem;
+}
+
+.Laravel{
+  background-color: red;
+  border-radius: 0.9rem;
+  padding: 0 0.3rem;
+}
+
+.CSS{
+  background-color: orange;
+  border-radius: 0.9rem;
+  padding: 0 0.3rem;
+}
+
+.HTML{
+  background-color: darkslategray;
+  border-radius: 0.9rem;
+  padding: 0 0.3rem;
+}
+.JavaScript{
+  background-color: yellow;
+  border-radius: 0.9rem;
+  padding: 0 0.3rem;
+}
 </style>
 
