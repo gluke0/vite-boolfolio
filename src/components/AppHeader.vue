@@ -66,8 +66,5 @@ export default{
   border-color: rgb(139, 235, 144) !important;
 }
 
-
-
-
 </style>
 
