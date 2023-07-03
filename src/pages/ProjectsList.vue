@@ -116,9 +116,12 @@ export default{
             <span class="me-3 ms-1"> {{ project.name }} </span>
           </label>
         </div>
+      </div>
 
+      <!-- no pjcts in the cat error -->
+      <div class="d-flex justify-content-center mt-5">
         <div v-if="checkingCat.length == 0">
-          <p>No project in this category.</p>
+            <h5 class="text-danger">Sorry! No projects in this category yet!</h5>
         </div>
       </div>
 
