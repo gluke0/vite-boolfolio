@@ -19,7 +19,7 @@ export default{
 </script>
 
 <template>
-  <main class="main-container-home vh-100 mt-5">
+  <main class="main-container-home vh-100 mt-5 overflow-auto">
     <div class="container">
       <div>
         <div class="pt-5 pb-3 text-white fs-1"> <i> Welcome! </i>  </div>

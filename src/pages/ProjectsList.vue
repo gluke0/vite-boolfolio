@@ -85,7 +85,7 @@ export default{
 </script>
 
 <template>
-<main class="main-container">
+<main class="main-container vh-100 overflow-auto">
   <div class="container">
 
     <h1 class="mb-5"> <i> My Projects</i></h1>
