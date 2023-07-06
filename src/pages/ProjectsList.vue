@@ -139,8 +139,8 @@ export default{
         <div>
           <ul v-if="project.technologies" class="d-flex p-0 text-white fs-5">
             <strong class="me-2"> Technology: </strong>
-            <li class="list-inline me-3" v-if="project.technologies.length > 0" v-for="(technology, index) in project.technologies" :class="project.name"> {{ technology.name }} </li>
-            <li class="list-inline me-3" v-else> No technologies declared </li>
+            <li class="list-inline me-3" v-if="project.technologies.length > 0" v-for="(technology, index) in project.technologies" :class="technology.name"> {{ technology.name }} </li>
+            <li class="list-inline me-3" v-else> <i class="text-dark">no technologies has been declared</i> </li>
           </ul>
         </div>
 
