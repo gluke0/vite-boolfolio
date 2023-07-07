@@ -56,18 +56,22 @@ export default{
       <div>
         <i class="fa-solid fa-info me-4"></i>
         <span v-if="project.category">{{ project.category.name }}</span>
-        <span v-else>This project has no category</span>
+        <span v-else class="text-dark"> <i> This project has no category</i></span>
       </div>
-      <div class="my-3"> <i class="fa-regular fa-file-lines me-3"></i> {{ project.description ? project.description : 'There is no description for this project' }}</div>
+      <div class="my-3">
+        <i class="fa-regular fa-file-lines me-3"></i>
+        <span v-if="project.description">{{ project.description }}</span>
+        <span v-else class="text-dark"> <i> This project has no description </i></span>
+      </div>
       <li class="list-inline" v-if="project.technologies.length > 0" v-for="(technology, index) in project.technologies" :key="index">
         <i class="fa-solid fa-laptop-code me-2"></i>
         {{ technology.name }}
       </li>
-      <li v-else> There are no technologies in this project </li>
+      <li v-else class="text-dark list-inline"> <i class="fa-solid fa-laptop-code me-2 text-white"></i> <i> There are no technologies in this project  </i></li>
       <div class="mt-3">
         <i class="fa-solid fa-link me-2"></i>
         <a v-if="project.link" class="text-decoration-none" :href="project.link">Get from GitHub</a>
-        <span v-else>No download link available</span>
+        <span v-else class="text-dark">  <i> No download link available </i> </span>
       </div>
     </div>
   </div>
