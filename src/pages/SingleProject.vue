@@ -50,7 +50,7 @@ export default{
  
  <main class="main-container vh-100 mt-5 overflow-auto">
   <div class="container">
-    <div class="card text-white bg-primary p-5">
+    <div class="card text-white bg-primary p-5 mb-5">
       <h4 class="card-title"> {{ project.title }} </h4>
       <img class="img-fluid my-3" :src="`${commonUrl}/storage/${project.image}`" alt="">
       <div>
@@ -67,7 +67,7 @@ export default{
         <i class="fa-solid fa-laptop-code me-2"></i>
         {{ technology.name }}
       </li>
-      <li v-else class="text-dark list-inline"> <i class="fa-solid fa-laptop-code me-2 text-white"></i> <i> There are no technologies in this project  </i></li>
+      <li v-else class="text-dark list-inline"> <i class="fa-solid fa-laptop-code me-2 text-white"></i> <i> No technologies has been declared  </i></li>
       <div class="mt-3">
         <i class="fa-solid fa-link me-2"></i>
         <a v-if="project.link" class="text-decoration-none" :href="project.link">Get from GitHub</a>
