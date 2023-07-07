@@ -125,33 +125,36 @@ export default{
         </div>
       </div>
 
-    <div class="mt-4" v-for="(project, index) in store.requestedProjects" :key="index">
+    <div class="container-card"> 
+      <div class="mt-4" v-for="(project, index) in store.requestedProjects" :key="index">
 
-        <div class="card-body card p-3 mb-3">
+          <div class="card-body card p-3 mb-3">
+            <div>
+              <p class="card-title mb-0 "><strong> <i class="fa-regular fa-file-code"></i> <router-link :to="{name: 'project', params: {slug: project.slug}}" class="text-decoration-none text-white"> {{ project.title }} </router-link> </strong> </p>
+            </div>
+            <img class="img-fluid my-3" :src="`${commonUrl}/storage/${project.image}`" alt="">
+
+            <!-- http://127.0.0.1:8000/storage/project_images/SOeQTvNVrbgRm2va4FJwuoXLjBtRFrgb5I5p1vRJ.png 
+            this is the images path-->
+
+        <div class="d-flex justify-content-between">
           <div>
-            <p class="card-title mb-0 "><strong> <i class="fa-regular fa-file-code"></i> <router-link :to="{name: 'project', params: {slug: project.slug}}" class="text-decoration-none text-white"> {{ project.title }} </router-link> </strong> </p>
+            <ul v-if="project.technologies" class="d-flex p-0 text-white fs-5">
+              <strong class="me-2"> Technology: </strong>
+              <li class="list-inline me-3" v-if="project.technologies.length > 0" v-for="(technology, index) in project.technologies" :class="technology.name"> {{ technology.name }} </li>
+              <li class="list-inline me-3" v-else> <i class="text-dark">no technologies has been declared</i> </li>
+            </ul>
           </div>
-          <img class="img-fluid my-3" :src="`${commonUrl}/storage/${project.image}`" alt="">
 
-          <!-- http://127.0.0.1:8000/storage/project_images/SOeQTvNVrbgRm2va4FJwuoXLjBtRFrgb5I5p1vRJ.png 
-          this is the images path-->
-
-        <div>
-          <ul v-if="project.technologies" class="d-flex p-0 text-white fs-5">
-            <strong class="me-2"> Technology: </strong>
-            <li class="list-inline me-3" v-if="project.technologies.length > 0" v-for="(technology, index) in project.technologies" :class="technology.name"> {{ technology.name }} </li>
-            <li class="list-inline me-3" v-else> <i class="text-dark">no technologies has been declared</i> </li>
-          </ul>
-        </div>
-
-          <!-- this is the line of code if I want to show the project category
-          <p class="card-text" v-if="project.category"> <strong> Category: </strong> {{project.category.name}} </p> -->
-          
-          <div class="fs-5">
-            <router-link :to="{name: 'project', params: {slug: project.slug}}" class="text-decoration-none"> Details </router-link>
+            <!-- this is the line of code if I want to show the project category
+            <p class="card-text" v-if="project.category"> <strong> Category: </strong> {{project.category.name}} </p> -->
+            
+            <div class="fs-5 me-5">
+              <router-link :to="{name: 'project', params: {slug: project.slug}}" class="text-decoration-none"> Details </router-link>
+            </div>
           </div>
         </div>
-
+      </div>
     </div>
 
     <!-- pages with buttons -->
@@ -228,6 +231,10 @@ input{
   font-weight: bolder;
 }
 
+.container-card{
+  width: 70%;
+  margin: auto;
+}
 
 </style>
 
